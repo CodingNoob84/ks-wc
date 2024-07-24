@@ -76,10 +76,7 @@ export const Register = () => {
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(values) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values);
   }
   return (
@@ -92,7 +89,7 @@ export const Register = () => {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you are done.
           </DialogDescription>
         </DialogHeader>
         <Form {...form} className="">
