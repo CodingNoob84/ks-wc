@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
 import { motion } from "framer-motion";
-
-export const Header = () => {
+import Link from "next/link";
+export const HomeButton = () => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.5 }}
@@ -10,11 +9,9 @@ export const Header = () => {
       transition={{ type: "spring", stiffness: 100 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="w-80 py-2"
+      className="border py-1 w-80 my-2 flex justify-center items-center"
     >
-      <div className="flex justify-center items-center border rounded-lg py-2">
-        <h1 className="text-2xl font-bold">Header</h1>
-      </div>
+      <Link href="/">Home</Link>
     </motion.div>
   );
 };

@@ -8,8 +8,10 @@ import { Tabs } from "@/components/Tabs";
 import { TabsMob } from "@/components/TabsMob";
 
 import useScreenSize from "@/hooks/useScreenSize";
+import { useState } from "react";
 
 export default function Home() {
+  const [intro, setIntro] = useState(true);
   const { isMobileScreen } = useScreenSize();
   return (
     <div
@@ -19,19 +21,24 @@ export default function Home() {
     >
       {/* bg-gradient-to-r from-purple-300 via-purple-500 to-purple-700 */}
       {/* <CoverComponent /> */}
-
-      {isMobileScreen ? (
-        <>
-          <TabsMob />
-        </>
+      {intro ? (
+        <CoverComponent setIntro={setIntro} />
       ) : (
         <>
-          <Header />
-          <Tabs />
+          {isMobileScreen ? (
+            <>
+              <TabsMob />
+            </>
+          ) : (
+            <>
+              <Header />
+              <Tabs />
+            </>
+          )}
+
+          <Info />
         </>
       )}
-      {/* <BottomNav /> */}
-      <Info />
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export const CoverComponent = () => {
+export const CoverComponent = ({ setIntro }) => {
   const [show, setShow] = useState(true);
   const [showButterflies, setShowButterflies] = useState(false);
 
@@ -19,7 +19,7 @@ export const CoverComponent = () => {
   }, [show]);
 
   return (
-    <div>
+    <div className="h-screen w-full flex justify-center items-center">
       <AnimatePresence>
         {show && (
           <motion.div
@@ -34,6 +34,7 @@ export const CoverComponent = () => {
                 onClick={() => {
                   setShow(false);
                   setShowButterflies(true);
+                  setIntro(false);
                 }}
                 className="border cursor-pointer p-2"
               >
