@@ -16,7 +16,9 @@ export default function InfoPage() {
       >
         <Header />
         <HomeButton />
-        <div className="flex flex-row gap-10">
+        <div
+          className={`flex ${isMobileScreen ? "flex-col" : "flex-row"}  gap-10`}
+        >
           <SlideUpCard>maps</SlideUpCard>
           <SlideUpCard>
             <Register />
