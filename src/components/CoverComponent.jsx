@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { OpenButton } from "./OpenButton";
 
 export const CoverComponent = ({ setIntro }) => {
   const [show, setShow] = useState(true);
@@ -26,7 +27,7 @@ export const CoverComponent = ({ setIntro }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 1, delay: 0.5 } }}
             exit={{ opacity: 0, transition: { duration: 1, delay: 0.5 } }}
-            className="max-w-sm flex flex-col justify-center items-center"
+            className="w-full flex flex-col justify-center items-center"
           >
             <div>
               <div>Content vs Content</div>
@@ -36,9 +37,9 @@ export const CoverComponent = ({ setIntro }) => {
                   setShowButterflies(true);
                   setIntro(false);
                 }}
-                className="border cursor-pointer p-2"
+                className=" cursor-pointer p-2"
               >
-                Open
+                <OpenButton />
               </div>
             </div>
           </motion.div>

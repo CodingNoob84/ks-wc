@@ -4,21 +4,22 @@ import { useState } from "react";
 
 import { SlideUpCard } from "./SlideUpCard";
 import { BottomNav } from "./BottomNav";
+import { BottomNavTest } from "./test/BottomNavTest";
 
 const Contents = [
   {
     id: "1",
-    item: "item1",
+    label: "item1",
     cards: ["card11", "card12", "card13"],
   },
   {
     id: "2",
-    item: "item2",
+    label: "item2",
     cards: ["card21", "card22", "card23"],
   },
   {
     id: "3",
-    item: "item3",
+    label: "item3",
     cards: ["card31", "card32", "card33"],
   },
 ];
@@ -41,7 +42,8 @@ export const Tabs = () => {
           </SlideUpCard>
         ))}
       </div>
-      <BottomNav items={itemIds} tab={tab} setTab={setTab} />
+      <BottomNavTest tabs={Contents} activeTab={tab} setActiveTab={setTab} />
+      {/* <BottomNav items={itemIds} tab={tab} setTab={setTab} /> */}
     </>
   );
 };

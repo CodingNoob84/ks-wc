@@ -2,7 +2,9 @@
 import { Header } from "@/components/Header";
 import { HomeButton } from "@/components/HomeButton";
 import { Register } from "@/components/Register";
+import { RegisterCard } from "@/components/RegisterCard";
 import { SlideUpCard } from "@/components/SlideUpCard";
+import { Venue } from "@/components/Venue";
 import useScreenSize from "@/hooks/useScreenSize";
 
 export default function InfoPage() {
@@ -19,9 +21,12 @@ export default function InfoPage() {
         <div
           className={`flex ${isMobileScreen ? "flex-col" : "flex-row"}  gap-10`}
         >
-          <SlideUpCard>maps</SlideUpCard>
           <SlideUpCard>
-            <Register />
+            <Venue />
+          </SlideUpCard>
+          <SlideUpCard>
+            <RegisterCard />
+            {/* <Register /> */}
           </SlideUpCard>
         </div>
       </div>
