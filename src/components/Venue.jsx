@@ -4,23 +4,22 @@ export const Venue = () => {
   return (
     <div className="">
       <img
-        src="/images/venue.webp"
+        src="/images/VKPalace.JPG"
         alt="Venue Image"
         className="w-full h-[200px] object-cover rounded-t-lg"
       />
       <div className="p-4 space-y-2">
-        <div className="text-lg font-semibold">Cozy Mountain Retreat</div>
+        <div className="text-lg font-semibold">V.K Palace</div>
         <div className="text-muted-foreground">
-          <p>123 Mountain View Rd, Somewhere, CA 12345</p>
+          <p>Thandalam, Periapalayam, Tiruvallur - 601102 </p>
         </div>
         <p className="text-sm text-muted-foreground">
-          Nestled in the heart of the mountains, this cozy retreat offers
-          breathtaking views
+          The venue is located directly opposite the Grey Suit Hotel.
         </p>
       </div>
       <div className="p-4">
         <Link
-          href="#"
+          href="https://www.google.com/maps/dir/12.9695744,80.2422784/vk+palace/@13.3104764,79.9950088,18z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3a528340c50846e7:0x8db126915eee7d95!2m2!1d79.9957294!2d13.3105528?entry=ttu"
           target="_blank"
           className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
           prefetch={false}

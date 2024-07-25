@@ -5,21 +5,28 @@ import { useState } from "react";
 import { SlideUpCard } from "./SlideUpCard";
 import { BottomNav } from "./BottomNav";
 import { BottomNavTest } from "./test/BottomNavTest";
+import { DJMusic } from "./DJMusic";
+import { Panthakal } from "./Panthakal";
+import { Reception } from "./Reception";
+import { Dinner } from "./Dinner";
+import { Haldi } from "./Haldi";
+import { Marriage, MarriageTimings } from "./Marriage";
+import { Breakfast } from "./Breakfast";
 
-const Contents = [
+const TabContents = [
   {
     id: "1",
-    label: "item1",
+    label: "Panthakal",
     cards: ["card11", "card12", "card13"],
   },
   {
     id: "2",
-    label: "item2",
+    label: "Reception",
     cards: ["card21", "card22", "card23"],
   },
   {
     id: "3",
-    label: "item3",
+    label: "Marriage",
     cards: ["card31", "card32", "card33"],
   },
 ];
@@ -29,20 +36,44 @@ const getItemsIds = (contents) => {
 };
 
 export const Tabs = () => {
-  const [tab, setTab] = useState("1");
-  const currentContent = Contents.find((content) => content.id === tab);
+  const [activeTab, setActiveTab] = useState("2");
+  const currentContent = TabContents.find(
+    (content) => content.id === activeTab
+  );
   const itemIds = getItemsIds(Contents);
   //console.log(itemIds);
   return (
     <>
       <div className="flex flex-row justify-between gap-10">
-        {currentContent.cards.map((card, index) => (
+        {activeTab == "1" ? (
+          <>
+            <Panthakal />
+            <Haldi />
+          </>
+        ) : activeTab == "2" ? (
+          <>
+            <DJMusic />
+            <Reception />
+            <Dinner />
+          </>
+        ) : (
+          <>
+            <Marriage />
+            <MarriageTimings />
+            <Breakfast />
+          </>
+        )}
+        {/* {currentContent.cards.map((card, index) => (
           <SlideUpCard key={`${tab}-${index}`}>
             <div>{card}</div>
           </SlideUpCard>
-        ))}
+        ))} */}
       </div>
-      <BottomNavTest tabs={Contents} activeTab={tab} setActiveTab={setTab} />
+      <BottomNavTest
+        tabs={Contents}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
       {/* <BottomNav items={itemIds} tab={tab} setTab={setTab} /> */}
     </>
   );

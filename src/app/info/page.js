@@ -25,8 +25,8 @@ export default function InfoPage() {
             <Venue />
           </SlideUpCard>
           <SlideUpCard>
-            <RegisterCard />
-            {/* <Register /> */}
+            {/* <RegisterCard /> */}
+            <Register />
           </SlideUpCard>
         </div>
       </div>
