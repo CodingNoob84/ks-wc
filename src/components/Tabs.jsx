@@ -40,7 +40,7 @@ export const Tabs = () => {
   const currentContent = TabContents.find(
     (content) => content.id === activeTab
   );
-  const itemIds = getItemsIds(Contents);
+  const itemIds = getItemsIds(TabContents);
   //console.log(itemIds);
   return (
     <>
@@ -70,7 +70,7 @@ export const Tabs = () => {
         ))} */}
       </div>
       <BottomNavTest
-        tabs={Contents}
+        tabs={TabContents}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
       />
