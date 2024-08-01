@@ -15,7 +15,6 @@ const TabContents = [
   {
     id: "1",
     label: "Panthakal",
-    cards: ["card11", "card12", "card13"],
   },
   {
     id: "2",
@@ -76,24 +75,38 @@ export const TabsMob = () => {
             <Breakfast />
           </>
         )}
-        {/* {currentContent.cards.map((card, index) => (
-          <SlideUpCard key={`${activeTab}-${index}`}>
-            <div>{card}</div>
-          </SlideUpCard>
-        ))} */}
       </div>
       <div className="flex justify-center items-center w-full mx-auto">
-        <nav className="fixed bottom-4 z-50 w-80 justify-center items-center bg-background border shadow-lg rounded-t-xl rounded-b-xl px-4 py-3">
-          <div className="flex flex-row justify-between">
-            {itemIds.map((item, i) => (
-              <div
-                key={i}
-                onClick={() => handleTabChange(item)}
-                className="border rounded-full w-8 h-8 flex justify-center items-center cursor-pointer"
-              >
-                {item}
-              </div>
-            ))}
+        <nav className="fixed bottom-4 z-50 w-80  justify-center items-center bg-gradient-to-tr from-red-400 via-orange-400 to-rose-400 border shadow-lg rounded-l-full rounded-r-full p-1">
+          <div className="bg-white rounded-l-full rounded-r-full px-4 py-3">
+            <div className="flex flex-row justify-between h-full px-2">
+              {TabContents.map((tab, i) => (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabChange(tab)}
+                  className={`${
+                    activeTab === tab.id ? "" : "hover:text-red-600/60"
+                  } relative rounded-full px-3 py-1.5 text-sm font-medium  outline-sky-400 transition focus-visible:outline-2`}
+                  style={{
+                    WebkitTapHighlightColor: "transparent",
+                  }}
+                >
+                  {activeTab === tab.id && (
+                    <motion.span
+                      layoutId="bubble"
+                      className="absolute inset-0 z-10 bg-white mix-blend-difference"
+                      style={{ borderRadius: 9999 }}
+                      transition={{
+                        type: "spring",
+                        bounce: 0.2,
+                        duration: 0.6,
+                      }}
+                    />
+                  )}
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
         </nav>
       </div>{" "}

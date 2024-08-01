@@ -2,11 +2,11 @@ import React from "react";
 
 export const AddToCalendarTest = () => {
   const event = {
-    title: "Event Title",
-    start: "20240801T090000Z", // YYYYMMDDTHHmmssZ format
-    end: "20240801T100000Z", // YYYYMMDDTHHmmssZ format
-    details: "Event Details",
-    location: "Event Location",
+    title: "Karthik's Marriage",
+    start: "20240905T180000Z", // YYYYMMDDTHHmmssZ format
+    end: "20240906T090000Z", // YYYYMMDDTHHmmssZ format
+    details: "Karthik weds sharmi",
+    location: "V.K Palace, Thandalam, Periyalapalayam, Thiruvallur-601102",
   };
 
   const googleCalendarUrl = `https://calendar.google.com/calendar/r/eventedit?text=${encodeURIComponent(

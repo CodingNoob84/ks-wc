@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export const AnimatedText = ({ text }) => {
   const letters = Array.from(text);
-  const [key, setKey] = useState(0);
+  const [animate, setAnimate] = useState(true);
 
   const staggerChildren = 0.25;
   const delayChildren = 0.25;
@@ -14,16 +14,14 @@ export const AnimatedText = ({ text }) => {
     (letters.length - 1) * staggerChildren + repeatDelay;
 
   const container = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: (i = 1) => ({
+    hidden: { opacity: 0 },
+    visible: {
       opacity: 1,
       transition: {
         staggerChildren: staggerChildren,
-        delayChildren: delayChildren * i,
+        delayChildren: delayChildren,
       },
-    }),
+    },
   };
 
   const child = {
@@ -49,27 +47,27 @@ export const AnimatedText = ({ text }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setKey((prevKey) => prevKey + 1);
+      setAnimate(false); // Stop animation
+      setTimeout(() => {
+        setAnimate(true); // Restart animation
+      }, 100); // Small delay to ensure re-render
     }, totalAnimationDuration * 1000); // Convert seconds to milliseconds
 
     return () => clearInterval(interval);
   }, [totalAnimationDuration]);
 
   return (
-    <AnimatePresence>
-      <motion.div
-        key={key}
-        className="overflow-hidden text-center font-extrabold"
-        variants={container}
-        initial="hidden"
-        animate="visible"
-      >
-        {letters.map((letter, index) => (
-          <motion.span className="inline-block" key={index} variants={child}>
-            {letter === " " ? "\u00A0" : letter}
-          </motion.span>
-        ))}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      className="text-center font-extrabold text-purple-600"
+      variants={container}
+      initial="hidden"
+      animate={animate ? "visible" : "hidden"}
+    >
+      {letters.map((letter, index) => (
+        <motion.span className="inline-block" key={index} variants={child}>
+          {letter === " " ? "\u00A0" : letter}
+        </motion.span>
+      ))}
+    </motion.div>
   );
 };

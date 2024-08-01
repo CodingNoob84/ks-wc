@@ -1,58 +1,42 @@
 "use client";
-import { BottomNav } from "@/components/BottomNav";
-import { CoverComponent } from "@/components/CoverComponent";
-import { DesktopIntro } from "@/components/DesktopIntro";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import { Info } from "@/components/Info";
-import { SlideUpCard } from "@/components/SlideUpCard";
-import { Tabs } from "@/components/Tabs";
-import { TabsMob } from "@/components/TabsMob";
-import { ImageReveal } from "@/components/test/ImageReveal";
-import Intro from "@/components/test/Intro";
-import { TabsOne } from "@/components/test/TabsOne";
-import { TabsTwo } from "@/components/test/TabsTwo";
+import { DesktopView } from "@/components/DesktopView";
+import { MobileView } from "@/components/MobileView";
 
 import useScreenSize from "@/hooks/useScreenSize";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [pageLoaded, setPageLoaded] = useState(false);
   const [intro, setIntro] = useState(true);
   const { isMobileScreen } = useScreenSize();
+
+  useEffect(() => {
+    // This effect runs once on component mount
+    setPageLoaded(true);
+  }, []);
   return (
     <div
       className={`flex flex-col ${
         isMobileScreen ? "h-full" : "h-screen"
-      } items-center bg-orange-200 `}
+      }  items-center bg-orange-100 `}
     >
       {/* bg-gradient-to-r from-purple-300 via-purple-500 to-purple-700 */}
 
-      {isMobileScreen ? (
+      {pageLoaded ? (
         <>
-          {intro ? (
-            <Intro setIntro={setIntro} />
+          {isMobileScreen ? (
+            <MobileView intro={intro} setIntro={setIntro} />
           ) : (
-            <>
-              <TabsMob />
-              <Info />
-              <Footer />
-            </>
+            <DesktopView intro={intro} setIntro={setIntro} />
           )}
         </>
       ) : (
-        <>
-          {intro ? (
-            <DesktopIntro setIntro={setIntro} />
-          ) : (
-            <>
-              <Header />
-              <Tabs />
-              <Info />
-              <Footer />
-            </>
-          )}
-        </>
+        <div className="h-screen flex justify-center items-center text-bold">
+          Wedding Invitation
+        </div>
       )}
+
+      {/*  */}
     </div>
   );
 }
