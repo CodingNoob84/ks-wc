@@ -27,7 +27,8 @@ export default function Home() {
       {/* bg-gradient-to-r from-purple-300 via-purple-500 to-purple-700 */}
 
       {intro ? (
-        <CoverComponent setIntro={setIntro} />
+        // <CoverComponent setIntro={setIntro} />
+        <Intro setIntro={setIntro} />
       ) : (
         <>
           {isMobileScreen ? (
