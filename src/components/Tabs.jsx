@@ -44,7 +44,7 @@ export const Tabs = () => {
   //console.log(itemIds);
   return (
     <>
-      <div className="flex flex-row justify-between gap-10">
+      <div className="flex flex-row justify-between gap-10 my-5">
         {activeTab == "1" ? (
           <>
             <Panthakal />

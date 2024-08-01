@@ -11,7 +11,10 @@ export const Marriage = () => {
 export const MarriageTimings = () => {
   return (
     <SlideUpCard>
-      <img src="/images/6.jpg" className="w-full h-full object-cover" />
+      <img
+        src="/images/MarriageDetails.jpg"
+        className="w-full h-full object-cover"
+      />
     </SlideUpCard>
   );
 };

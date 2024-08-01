@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { AnimatedText } from "./test/AnimatedText";
 
 export const Header = () => {
   return (
@@ -10,10 +11,15 @@ export const Header = () => {
       transition={{ type: "spring", stiffness: 100 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="w-80 py-2"
+      className="max-w-2xl mx-auto my-4"
     >
-      <div className="flex justify-center items-center border rounded-lg py-2 bg-purple-400">
-        <h1 className="text-2xl font-bold">Karthik weds Sharmi</h1>
+      <div className="relative group cursor-pointer">
+        <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-violet-600 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+        <div className="relative p-6 bg-white ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-center">
+          <div className="flex justify-center items-center">
+            <AnimatedText text="Karthik weds Sharmi" />
+          </div>
+        </div>
       </div>
     </motion.div>
   );

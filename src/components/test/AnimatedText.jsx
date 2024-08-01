@@ -59,7 +59,7 @@ export const AnimatedText = ({ text }) => {
     <AnimatePresence>
       <motion.div
         key={key}
-        className="overflow-hidden text-center"
+        className="overflow-hidden text-center font-extrabold"
         variants={container}
         initial="hidden"
         animate="visible"
