@@ -5,30 +5,32 @@ export const BottomNavTest = ({ tabs, activeTab, setActiveTab }) => {
   console.log(tabs);
   return (
     <div className="flex justify-center items-center w-full mx-auto">
-      <nav className="fixed bottom-4 z-50 w-80  justify-center items-center bg-background border shadow-lg rounded-l-full rounded-r-full px-4 py-3">
-        <div className="flex flex-row justify-between h-full">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`${
-                activeTab === tab.id ? "" : "hover:text-white/60"
-              } relative rounded-full px-3 py-1.5 text-sm font-medium  outline-sky-400 transition focus-visible:outline-2`}
-              style={{
-                WebkitTapHighlightColor: "transparent",
-              }}
-            >
-              {activeTab === tab.id && (
-                <motion.span
-                  layoutId="bubble"
-                  className="absolute inset-0 z-10 bg-white mix-blend-difference"
-                  style={{ borderRadius: 9999 }}
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              {tab.label}
-            </button>
-          ))}
+      <nav className="fixed bottom-4 z-50 w-80  justify-center items-center bg-gradient-to-tr from-red-400 via-orange-400 to-rose-400 border shadow-lg rounded-l-full rounded-r-full p-1">
+        <div className="bg-white rounded-l-full rounded-r-full px-4 py-3">
+          <div className="flex flex-row justify-between h-full">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`${
+                  activeTab === tab.id ? "" : "hover:text-red-600/60"
+                } relative rounded-full px-3 py-1.5 text-sm font-medium  outline-sky-400 transition focus-visible:outline-2`}
+                style={{
+                  WebkitTapHighlightColor: "transparent",
+                }}
+              >
+                {activeTab === tab.id && (
+                  <motion.span
+                    layoutId="bubble"
+                    className="absolute inset-0 z-10 bg-white mix-blend-difference"
+                    style={{ borderRadius: 9999 }}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
       </nav>
     </div>

@@ -3,6 +3,13 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SlideUpCard } from "./SlideUpCard";
 import { Header } from "./Header";
+import { Panthakal } from "./Panthakal";
+import { Haldi } from "./Haldi";
+import { DJMusic } from "./DJMusic";
+import { Reception } from "./Reception";
+import { Dinner } from "./Dinner";
+import { Marriage, MarriageTimings } from "./Marriage";
+import { Breakfast } from "./Breakfast";
 
 const TabContents = [
   {
@@ -90,7 +97,6 @@ export const TabsMob = () => {
           </div>
         </nav>
       </div>{" "}
-      */}
     </>
   );
 };

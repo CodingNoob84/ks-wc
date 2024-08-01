@@ -159,7 +159,7 @@ export const Register = () => {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
               control={form.control}
-              name="username"
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Username</FormLabel>
@@ -288,10 +288,8 @@ export const Register = () => {
           </form>
         </Form>
 
-            {/* </ScrollArea> */}
-          </DialogContent>
-        </Dialog>
-      </div>
-    </div>
+        {/* </ScrollArea> */}
+      </DialogContent>
+    </Dialog>
   );
 };
