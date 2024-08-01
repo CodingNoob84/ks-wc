@@ -1,15 +1,20 @@
 import { Footer } from "@/components/Footer";
+import { Info } from "@/components/Info";
+import { GlowingHeader } from "@/components/test/GlowingHeader";
+import { HeaderTest } from "@/components/test/HeaderTest";
 import Intro from "@/components/test/Intro";
 
 export default function TestPage() {
   return (
-    <div>
+    <div className=" h-screen">
+      <GlowingHeader />
+      <HeaderTest />
       {/* <ImageReveal /> */}
-      <Intro />
+      {/* <Intro /> */}
       {/* <Tabs /> */}
-
+      <Info />
       {/* <CoverComponent /> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

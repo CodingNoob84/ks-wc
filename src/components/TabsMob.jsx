@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { SlideUpCard } from "./SlideUpCard";
 import { Header } from "./Header";
+import { BottomNavTest } from "./test/BottomNavTest";
 
 const Contents = [
   {
@@ -55,7 +56,8 @@ export const TabsMob = () => {
           </SlideUpCard>
         ))}
       </div>
-      <div className="flex justify-center items-center w-full mx-auto">
+      <BottomNavTest tabs={Contents} activeTab={tab} setActiveTab={setTab} />
+      {/* <div className="flex justify-center items-center w-full mx-auto">
         <nav className="fixed bottom-4 z-50 w-80 justify-center items-center bg-background border shadow-lg rounded-t-xl rounded-b-xl px-4 py-3">
           <div className="flex flex-row justify-between">
             {itemIds.map((item, i) => (
@@ -69,7 +71,7 @@ export const TabsMob = () => {
             ))}
           </div>
         </nav>
-      </div>
+      </div> */}
     </>
   );
 };
