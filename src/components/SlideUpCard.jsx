@@ -11,7 +11,7 @@ export const SlideUpCard = ({ children }) => {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       exit={{ opacity: 0, y: 100 }}
       transition={{ type: "spring", duration: 3, damping: 5 }}
-      className="md:w-80 h-[500px] border rounded-lg shadow-lg"
+      className="w-[300px] h-[500px] border rounded-lg shadow-lg"
     >
       {children}
     </motion.div>

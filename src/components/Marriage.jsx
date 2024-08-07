@@ -3,7 +3,7 @@ import { SlideUpCard } from "./SlideUpCard";
 export const Marriage = () => {
   return (
     <SlideUpCard>
-      <img src="/images/7.jpg" className="w-full h-full object-cover" />
+      <img src="/images/Marriage.png" className="w-full h-full object-cover" />
     </SlideUpCard>
   );
 };

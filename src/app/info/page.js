@@ -14,12 +14,14 @@ export default function InfoPage() {
       <div
         className={`flex flex-col ${
           isMobileScreen ? "h-full" : "h-screen"
-        } items-center `}
+        } items-center bg-orange-100 `}
       >
         <Header />
         <HomeButton />
         <div
-          className={`flex ${isMobileScreen ? "flex-col" : "flex-row"}  gap-10`}
+          className={`flex ${
+            isMobileScreen ? "flex-col" : "flex-row"
+          }  gap-10  mx-2`}
         >
           <SlideUpCard>
             <Venue />

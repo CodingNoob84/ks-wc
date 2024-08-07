@@ -37,7 +37,7 @@ export const DesktopIntro = ({ setIntro }) => {
           <Button
             size="xl"
             onClick={() => setIntro(false)}
-            className="rounded-full animate-bounce bg-purple-500 border border-red-500 text-white hover:bg-white/30 focus:bg-white/30 hover:ring-purple-500"
+            className="rounded-full px-8 py-4  animate-bounce bg-purple-500 border border-red-500 text-white hover:bg-white/30 focus:bg-white/30 hover:ring-purple-500"
           >
             <span className="text-black font-extrabold">Open</span>
           </Button>

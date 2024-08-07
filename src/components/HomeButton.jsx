@@ -9,7 +9,7 @@ export const HomeButton = () => {
       transition={{ type: "spring", stiffness: 100 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="border py-1 w-80 my-2 flex justify-center items-center"
+      className="border  w-80 my-2 flex justify-center items-center bg-orange-300 py-3 rounded-lg cursor-pointer"
     >
       <Link href="/">Home</Link>
     </motion.div>

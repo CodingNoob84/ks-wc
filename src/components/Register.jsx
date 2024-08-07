@@ -24,6 +24,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Checkbox } from "./ui/checkbox";
+import { useEffect, useState } from "react";
 
 const items = [
   {
@@ -86,23 +87,23 @@ const Sidedishes = [
   },
   {
     id: "mushroom",
-    label: "Mushroom",
+    label: "Mushroom Fry",
   },
   {
     id: "paneer",
-    label: "Panneer",
+    label: "Panneer Tika",
   },
   {
     id: "Chicken",
-    label: "Chicken",
+    label: "Chili Chicken",
   },
   {
     id: "Mutton",
-    label: "Mutton",
+    label: "Mutton Chuka",
   },
   {
     id: "Lever",
-    label: "Lever",
+    label: "Lever Fry",
   },
 ];
 
@@ -110,13 +111,17 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
+  phoneno: z.string().regex(/^[789]\d{9}$/, {
+    message:
+      "Invalid phone number. It must be a 10-digit number starting with 7, 8, or 9.",
+  }),
   beverages: z
     .array(z.string())
     .refine((value) => value.length >= 1, {
       message: "You have to select at least one item.",
     })
-    .refine((value) => value.length <= 3, {
-      message: "You can select a maximum of four items.",
+    .refine((value) => value.length <= 2, {
+      message: "You can select a maximum of two items.",
     }),
   sidedish: z
     .array(z.string())
@@ -124,172 +129,240 @@ const formSchema = z.object({
       message: "You have to select at least one item.",
     })
     .refine((value) => value.length <= 2, {
-      message: "You can select a maximum of four items.",
+      message: "You can select a maximum of two items.",
     }),
 });
 
 export const Register = () => {
-  // 1. Define your form.
+  const [open, setOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
+      phoneno: "",
       beverages: [],
       sidedish: [],
     },
   });
 
   function onSubmit(values) {
+    if (values) {
+      setIsSubmitted(true);
+    }
     console.log(values);
   }
+
+  useEffect(() => {
+    let timer;
+    if (isSubmitted) {
+      timer = setTimeout(() => {
+        setIsSubmitted(false);
+        setOpen(false);
+        form.reset();
+      }, 5000);
+    }
+    return () => clearTimeout(timer);
+  }, [isSubmitted, form.reset]);
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] h-[600px] overflow-auto">
-        {/* <ScrollArea className="h-[600px]"> */}
-        <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you are done.
-          </DialogDescription>
-        </DialogHeader>
-        <Form {...form} className="">
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input placeholder="shadcn" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="items"
-              render={() => (
-                <FormItem>
-                  <div className="mb-4">
-                    <FormLabel className="text-base">Sidebar</FormLabel>
-                    <FormDescription>
-                      Select the items you want to display in the sidebar.
-                    </FormDescription>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    {" "}
-                    {items.map((item) => (
+    <>
+      <div className="relative  h-[500px] overflow-hidden">
+        <img
+          src="/images/Bachelorbash.png"
+          alt="Card Image"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute bottom-24 left-0 w-full  p-5 flex justify-center items-center">
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild className="">
+              <Button
+                variant="outline"
+                className="font-extrabold bg-red-400 hover:scale-120"
+              >
+                Register
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px] h-[550px] overflow-auto">
+              {isSubmitted ? (
+                <img
+                  src="/images/NoBachelorParty.png"
+                  className="object-cover"
+                />
+              ) : (
+                <>
+                  <DialogHeader>
+                    <DialogTitle>Register</DialogTitle>
+                    <DialogDescription>
+                      Make changes to your profile here. Click save when you are
+                      done.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <Form {...form} className="">
+                    <form
+                      onSubmit={form.handleSubmit(onSubmit)}
+                      className="space-y-8"
+                    >
                       <FormField
-                        key={item.id}
                         control={form.control}
-                        name="items"
-                        className=""
-                        render={({ field }) => {
-                          return (
-                            <FormItem
-                              key={item.id}
-                              className="flex flex-row items-start space-x-3 space-y-0"
-                            >
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes(item.id)}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([
-                                          ...field.value,
-                                          item.id,
-                                        ])
-                                      : field.onChange(
-                                          field.value?.filter(
-                                            (value) => value !== item.id
-                                          )
-                                        );
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Name</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter your name" {...field} />
+                            </FormControl>
+
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="phoneno"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone Number</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Enter your phone number"
+                                {...field}
+                              />
+                            </FormControl>
+
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="beverages"
+                        render={() => (
+                          <FormItem>
+                            <div className="mb-4">
+                              <FormLabel className="text-base">
+                                Beverages
+                              </FormLabel>
+                              <FormDescription>
+                                Select any two items you want.
+                              </FormDescription>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                              {" "}
+                              {Beverages.map((item) => (
+                                <FormField
+                                  key={item.id}
+                                  control={form.control}
+                                  name="beverages"
+                                  className=""
+                                  render={({ field }) => {
+                                    return (
+                                      <FormItem
+                                        key={item.id}
+                                        className="flex flex-row items-start space-x-3 space-y-0"
+                                      >
+                                        <FormControl>
+                                          <Checkbox
+                                            checked={field.value?.includes(
+                                              item.id
+                                            )}
+                                            onCheckedChange={(checked) => {
+                                              return checked
+                                                ? field.onChange([
+                                                    ...field.value,
+                                                    item.id,
+                                                  ])
+                                                : field.onChange(
+                                                    field.value?.filter(
+                                                      (value) =>
+                                                        value !== item.id
+                                                    )
+                                                  );
+                                            }}
+                                          />
+                                        </FormControl>
+                                        <FormLabel className="text-sm font-normal">
+                                          {item.label}
+                                        </FormLabel>
+                                      </FormItem>
+                                    );
                                   }}
                                 />
-                              </FormControl>
-                              <FormLabel className="text-sm font-normal">
-                                {item.label}
-                              </FormLabel>
-                            </FormItem>
-                          );
-                        }}
-                      />
-                    ))}
-                  </div>
+                              ))}
+                            </div>
 
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="items"
-              render={() => (
-                <FormItem>
-                  <div className="mb-4">
-                    <FormLabel className="text-base">Sidebar</FormLabel>
-                    <FormDescription>
-                      Select the items you want to display in the sidebar.
-                    </FormDescription>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    {items.map((item) => (
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                       <FormField
-                        key={item.id}
                         control={form.control}
-                        name="items"
-                        render={({ field }) => {
-                          return (
-                            <FormItem
-                              key={item.id}
-                              className="flex flex-row items-start space-x-3 space-y-0"
-                            >
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes(item.id)}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([
-                                          ...field.value,
-                                          item.id,
-                                        ])
-                                      : field.onChange(
-                                          field.value?.filter(
-                                            (value) => value !== item.id
-                                          )
-                                        );
+                        name="sidedish"
+                        render={() => (
+                          <FormItem>
+                            <div className="mb-4">
+                              <FormLabel className="text-base">
+                                Sidebar
+                              </FormLabel>
+                              <FormDescription>
+                                Select any two items you want.
+                              </FormDescription>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                              {Sidedishes.map((item) => (
+                                <FormField
+                                  key={item.id}
+                                  control={form.control}
+                                  name="sidedish"
+                                  render={({ field }) => {
+                                    return (
+                                      <FormItem
+                                        key={item.id}
+                                        className="flex flex-row items-start space-x-3 space-y-0"
+                                      >
+                                        <FormControl>
+                                          <Checkbox
+                                            checked={field.value?.includes(
+                                              item.id
+                                            )}
+                                            onCheckedChange={(checked) => {
+                                              return checked
+                                                ? field.onChange([
+                                                    ...field.value,
+                                                    item.id,
+                                                  ])
+                                                : field.onChange(
+                                                    field.value?.filter(
+                                                      (value) =>
+                                                        value !== item.id
+                                                    )
+                                                  );
+                                            }}
+                                          />
+                                        </FormControl>
+                                        <FormLabel className="text-sm font-normal">
+                                          {item.label}
+                                        </FormLabel>
+                                      </FormItem>
+                                    );
                                   }}
                                 />
-                              </FormControl>
-                              <FormLabel className="text-sm font-normal">
-                                {item.label}
-                              </FormLabel>
-                            </FormItem>
-                          );
-                        }}
+                              ))}
+                            </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    ))}
-                  </div>
-                  <FormMessage />
-                </FormItem>
+                      <Button type="submit" className="w-full">
+                        Submit
+                      </Button>
+                    </form>
+                  </Form>
+                </>
               )}
-            />
-            <Button type="submit" className="w-full">
-              Submit
-            </Button>
-          </form>
-        </Form>
-
-        {/* </ScrollArea> */}
-      </DialogContent>
-    </Dialog>
+            </DialogContent>
+          </Dialog>
+        </div>
+      </div>
+    </>
   );
 };

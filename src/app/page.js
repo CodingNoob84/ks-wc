@@ -31,7 +31,7 @@ export default function Home() {
           )}
         </>
       ) : (
-        <div className="h-screen flex justify-center items-center text-bold">
+        <div className="h-screen flex justify-center items-center text-[15px] text-bold">
           Wedding Invitation
         </div>
       )}

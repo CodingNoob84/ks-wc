@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Venue = () => {
   return (
-    <div className="">
+    <div className="bg-green-100 h-full">
       <img
         src="/images/VKPalace.JPG"
         alt="Venue Image"
@@ -16,6 +16,7 @@ export const Venue = () => {
         <p className="text-sm text-muted-foreground">
           The venue is located directly opposite the Grey Suit Hotel.
         </p>
+        <p>Bus stop: Thandalam bus stop</p>
       </div>
       <div className="p-4">
         <Link
