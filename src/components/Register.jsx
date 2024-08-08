@@ -168,7 +168,7 @@ export const Register = () => {
     <>
       <div className="relative  h-[500px] overflow-hidden">
         <img
-          src="/images/Bachelorbash.png"
+          src="/images/BachelorBash.png"
           alt="Card Image"
           className="w-full h-full object-cover"
         />
@@ -193,8 +193,7 @@ export const Register = () => {
                   <DialogHeader>
                     <DialogTitle>Register</DialogTitle>
                     <DialogDescription>
-                      Make changes to your profile here. Click save when you are
-                      done.
+                      Only registered guests are permitted to attend this party.
                     </DialogDescription>
                   </DialogHeader>
                   <Form {...form} className="">
@@ -301,7 +300,7 @@ export const Register = () => {
                           <FormItem>
                             <div className="mb-4">
                               <FormLabel className="text-base">
-                                Sidebar
+                                SideDishes
                               </FormLabel>
                               <FormDescription>
                                 Select any two items you want.

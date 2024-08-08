@@ -31,15 +31,20 @@ export const ImageReveal = () => {
         initial="hidden"
         animate={reveal ? "visible" : "hidden"}
         variants={revealVariants}
-      />
+      >
+        <img
+          src="/images/BachelorBash.png"
+          alt="Card Image"
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
       <div
         onClick={() => setReveal(!reveal)}
         className={`absolute bottom-4 left-4 w-16 h-16 rounded-full ${
           !reveal && "border"
-        } text-sm font-extrabold  flex justify-center items-center text-wrap cursor-pointer bg-white z-20`}
+        } text-sm font-extrabold flex justify-center items-center text-wrap cursor-pointer bg-white z-20`}
       >
-        {" "}
-        <div> {reveal ? "close" : "click me"}</div>
+        <div>{reveal ? "close" : "click me"}</div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { Info } from "@/components/Info";
 import { BottomNavTest } from "@/components/test/BottomNavTest";
 import { GlowingHeader } from "@/components/test/GlowingHeader";
 import { HeaderTest } from "@/components/test/HeaderTest";
+import { ImageReveal } from "@/components/test/ImageReveal";
 import Intro from "@/components/test/Intro";
 
 const TabContents = [
@@ -28,13 +29,13 @@ export default function TestPage() {
     <div className=" h-screen">
       {/* <GlowingHeader />
       <HeaderTest /> */}
-      {/* <ImageReveal /> */}
+      <ImageReveal />
       {/* <Intro /> */}
       {/* <Tabs /> */}
       {/* <Info /> */}
       {/* <CoverComponent /> */}
       {/* <Footer /> */}
-      <BottomNavTest tabs={TabContents} activeTab={""} setActiveTab={""} />
+      {/* <BottomNavTest tabs={TabContents} activeTab={""} setActiveTab={""} /> */}
     </div>
   );
 }
