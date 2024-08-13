@@ -19,6 +19,13 @@ export default function Home() {
       className={`flex flex-col ${
         isMobileScreen ? "h-full" : "h-screen"
       }  items-center bg-orange-100 `}
+      style={{
+        backgroundImage: "url('./images/winter.gif')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        width: "100%",
+        height: isMobileScreen ? "100%" : "100vh",
+      }}
     >
       {/* bg-gradient-to-r from-purple-300 via-purple-500 to-purple-700 */}
 

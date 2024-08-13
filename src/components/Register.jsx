@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/form";
 import { Checkbox } from "./ui/checkbox";
 import { useEffect, useState } from "react";
+import ConfettiExplosion from "react-confetti-explosion";
 
 const items = [
   {
@@ -177,18 +178,28 @@ export const Register = () => {
             <DialogTrigger asChild className="">
               <Button
                 variant="outline"
-                className="font-extrabold bg-red-400 hover:scale-120"
+                className="animate-bounce  font-extrabold bg-red-400 hover:scale-120"
               >
                 Register
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] h-[550px] overflow-auto">
+            <DialogContent
+              hideCloseButton={isSubmitted}
+              className={` ${
+                isSubmitted
+                  ? "w-[300px] h-[500px]"
+                  : "sm:max-w-[425px] h-[550px] overflow-auto"
+              } `}
+            >
               {isSubmitted ? (
-                <img
-                  src="/images/NoBachelorParty.png"
-                  className="object-cover"
-                />
+                <video className="w-full h-full object-cover" autoPlay>
+                  <source src="/images/NoPartyV.mp4" type="video/mp4" />
+                </video>
               ) : (
+                // <img
+                //   src="/images/NoBachelorParty.png"
+                //   className="w-full h-full object-cover"
+                // />
                 <>
                   <DialogHeader>
                     <DialogTitle>Register</DialogTitle>

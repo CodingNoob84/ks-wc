@@ -12,7 +12,7 @@ export const DJMusic = () => {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
   return (
     <SlideUpCard>
-      <div className="w-full h-full overflow-hidden">
+      {/* <div className="w-full h-full overflow-hidden">
         <Carousel plugins={[plugin.current]} className="w-full h-full">
           <CarouselContent className="w-full h-full">
             {Images?.map((img, i) => (
@@ -22,7 +22,16 @@ export const DJMusic = () => {
             ))}
           </CarouselContent>
         </Carousel>
-      </div>
+      </div> */}
+      <video
+        className="w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/images/Music.mp4" type="video/mp4" />
+      </video>
     </SlideUpCard>
   );
 };

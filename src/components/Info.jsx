@@ -6,7 +6,7 @@ export const Info = () => {
   const event = {
     title: "Karthik's Marriage",
     start: "20240905T123000Z", // YYYYMMDDTHHmmssZ format
-    end: "20240906T153000Z", // YYYYMMDDTHHmmssZ format
+    end: "20240906T033000Z", // YYYYMMDDTHHmmssZ format
     details:
       "You are cordially invited to the wedding of Karthik and Sharmi. The reception will be held on September 5th, followed by the marriage ceremony on September 6th.",
     location: "V.K Palace, Thandalam, Periyalapalayam, Thiruvallur-601102",
