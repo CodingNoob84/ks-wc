@@ -5,7 +5,7 @@ import { AnimatedText } from "./test/AnimatedText";
 
 export const Header = () => {
   return (
-    <div className="sticky top-0 flex justify-center w-full h-24 ">
+    <div className="sticky top-0 flex justify-center w-full h-24 z-50 ">
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}

@@ -10,6 +10,7 @@ import { Reception } from "./Reception";
 import { Dinner } from "./Dinner";
 import { Marriage, MarriageTimings } from "./Marriage";
 import { Breakfast } from "./Breakfast";
+import { ImageCard } from "./ImageCard";
 
 const TabContents = [
   {
@@ -59,20 +60,53 @@ export const TabsMob = () => {
       <div className="w-full px-8 flex flex-col justify-center gap-20 mt-10 mb-20">
         {activeTab == "1" ? (
           <>
-            <Panthakal />
-            <Haldi />
+            <ImageCard
+              key={11}
+              Image={"./images/Panthakal.png"}
+              memeImage={"./images/memes/9.png"}
+            />
+            <ImageCard
+              key={12}
+              Image={"./images/Haldi.png"}
+              memeImage={"./images/memes/1.png"}
+            />
           </>
         ) : activeTab == "2" ? (
           <>
-            <DJMusic />
-            <Reception />
-            <Dinner />
+            <ImageCard
+              key={21}
+              Image={"./images/Music.mp4"}
+              memeImage={"./images/memes/3.png"}
+              IsVideo={true}
+            />
+            <ImageCard
+              key={22}
+              Image={"./images/ReceptionDetails.png"}
+              memeImage={"./images/memes/2.png"}
+            />
+            <ImageCard
+              key={23}
+              Image={"./images/Dinner.png"}
+              memeImage={"./images/memes/4.png"}
+            />
           </>
         ) : (
           <>
-            <Marriage />
-            <MarriageTimings />
-            <Breakfast />
+            <ImageCard
+              key={31}
+              Image={"./images/Marriage.png"}
+              memeImage={"./images/memes/8.png"}
+            />
+            <ImageCard
+              key={32}
+              Image={"./images/MarriageDetails.png"}
+              memeImage={"./images/memes/5.png"}
+            />
+            <ImageCard
+              key={33}
+              Image={"./images/Breakfast.png"}
+              memeImage={"./images/memes/6.png"}
+            />
           </>
         )}
       </div>

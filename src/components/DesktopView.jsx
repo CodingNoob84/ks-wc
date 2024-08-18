@@ -14,7 +14,7 @@ export const DesktopView = ({ intro, setIntro }) => {
           <Header />
           <Tabs />
           <Info />
-          <Footer />
+          {/* <Footer /> */}
         </>
       )}
     </>

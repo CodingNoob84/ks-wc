@@ -9,7 +9,7 @@ export default function MobileIntro({ setIntro }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowButton(true);
-    }, 15000);
+    }, 8000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -38,7 +38,7 @@ export default function MobileIntro({ setIntro }) {
           <Button
             size="xl"
             onClick={() => setIntro(false)}
-            className="rounded-full animate-bounce bg-purple-500 border border-red-500 text-white hover:bg-white/30 focus:bg-white/30 hover:ring-purple-500"
+            className="rounded-full animate-bounce px-8 py-4 bg-purple-500 border border-red-500 text-white hover:bg-white/30 focus:bg-white/30 hover:ring-purple-500"
           >
             <span className="text-black font-extrabold">Open</span>
           </Button>

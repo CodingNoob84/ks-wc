@@ -26,6 +26,13 @@ import {
 import { Checkbox } from "./ui/checkbox";
 import { useEffect, useState } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const items = [
   {
@@ -76,6 +83,14 @@ const Beverages = [
     label: "Whiskey",
   },
   {
+    id: "rum",
+    label: "Rum",
+  },
+  {
+    id: "gin",
+    label: "Gin",
+  },
+  {
     id: "cocktail",
     label: "Cocktails",
   },
@@ -95,8 +110,12 @@ const Sidedishes = [
     label: "Panneer Tika",
   },
   {
-    id: "Chicken",
+    id: "Chickenchili",
     label: "Chili Chicken",
+  },
+  {
+    id: "Chickenpepper",
+    label: "Chicken Pepper Fry",
   },
   {
     id: "Mutton",
@@ -115,6 +134,9 @@ const formSchema = z.object({
   phoneno: z.string().regex(/^[789]\d{9}$/, {
     message:
       "Invalid phone number. It must be a 10-digit number starting with 7, 8, or 9.",
+  }),
+  day: z.enum(["friday", "saturday", "sunday"], {
+    errorMap: () => ({ message: "Please select one of day" }),
   }),
   beverages: z
     .array(z.string())
@@ -142,6 +164,7 @@ export const Register = () => {
     defaultValues: {
       name: "",
       phoneno: "",
+      day: "",
       beverages: [],
       sidedish: [],
     },
@@ -169,7 +192,7 @@ export const Register = () => {
     <>
       <div className="relative  h-[500px] overflow-hidden">
         <img
-          src="/images/BachelorBash.png"
+          src="/images/BachelorParty.png"
           alt="Card Image"
           className="w-full h-full object-cover"
         />
@@ -185,14 +208,14 @@ export const Register = () => {
             </DialogTrigger>
             <DialogContent
               hideCloseButton={isSubmitted}
-              className={` ${
+              className={`${
                 isSubmitted
                   ? "w-[300px] h-[500px]"
-                  : "sm:max-w-[425px] h-[550px] overflow-auto"
+                  : "p-6 sm:max-w-[425px] h-[550px] overflow-auto"
               } `}
             >
               {isSubmitted ? (
-                <video className="w-full h-full object-cover" autoPlay>
+                <video className="w-full h-full object-cover" autoPlay muted>
                   <source src="/images/NoPartyV.mp4" type="video/mp4" />
                 </video>
               ) : (
@@ -239,6 +262,38 @@ export const Register = () => {
                               />
                             </FormControl>
 
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="day"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Perfered Day</FormLabel>
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select a preferred night of the week" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="friday">Friday</SelectItem>
+                                <SelectItem value="saturday">
+                                  Saturday
+                                </SelectItem>
+                                <SelectItem value="sunday">Sunday</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            {/* <FormDescription>
+                              You can manage email addresses in your{" "}
+                              <Link href="/examples/forms">email settings</Link>
+                              .
+                            </FormDescription> */}
                             <FormMessage />
                           </FormItem>
                         )}

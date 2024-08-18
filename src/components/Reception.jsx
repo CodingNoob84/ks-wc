@@ -4,7 +4,7 @@ export const Reception = () => {
   return (
     <SlideUpCard>
       <img
-        src="/images/ReceptionDetails.jpg"
+        src="/images/ReceptionDetails.png"
         className="w-full h-full object-cover"
       />
     </SlideUpCard>

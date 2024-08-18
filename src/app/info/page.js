@@ -1,4 +1,5 @@
 "use client";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { HomeButton } from "@/components/HomeButton";
 import { Register } from "@/components/Register";
@@ -16,9 +17,7 @@ export default function InfoPage() {
   return (
     <>
       <div
-        className={`flex flex-col ${
-          isMobileScreen ? "h-full" : "h-screen"
-        } items-center bg-orange-100 `}
+        className={`flex flex-col h-full sm:h-screen items-center bg-orange-100 `}
         style={{
           backgroundImage: "url('./images/winter.gif')",
           backgroundSize: "cover",
@@ -36,14 +35,14 @@ export default function InfoPage() {
             isMobileScreen ? "flex-col" : "flex-row"
           }  gap-10  mx-2`}
         >
-          <SlideUpCard>
+          <SlideUpCard memeShow={false}>
             <Venue />
           </SlideUpCard>
-          <SlideUpCard>
-            {/* <RegisterCard /> */}
+          <SlideUpCard memeShow={false}>
             <Register />
           </SlideUpCard>
         </div>
+        <Footer />
       </div>
     </>
   );

@@ -15,35 +15,58 @@ export default function Home() {
     setPageLoaded(true);
   }, []);
   return (
-    <div
-      className={`flex flex-col ${
-        isMobileScreen ? "h-full" : "h-screen"
-      }  items-center bg-orange-100 `}
-      style={{
-        backgroundImage: "url('./images/winter.gif')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        width: "100%",
-        height: isMobileScreen ? "100%" : "100vh",
-      }}
-    >
-      {/* bg-gradient-to-r from-purple-300 via-purple-500 to-purple-700 */}
+    <>
+      <div
+        className="sm:hidden h-full flex flex-col"
+        style={{
+          backgroundImage: "url('./images/winter.gif')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <MobileView intro={intro} setIntro={setIntro} />
+      </div>
+      <div
+        className="hidden sm:block h-screen "
+        style={{
+          backgroundImage: "url('./images/winter.gif')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          width: "100%",
+          height: "100vh",
+        }}
+      >
+        <DesktopView intro={intro} setIntro={setIntro} />
+      </div>
+    </>
 
-      {pageLoaded ? (
-        <>
-          {isMobileScreen ? (
-            <MobileView intro={intro} setIntro={setIntro} />
-          ) : (
-            <DesktopView intro={intro} setIntro={setIntro} />
-          )}
-        </>
-      ) : (
-        <div className="h-screen flex justify-center items-center text-[15px] text-bold">
-          Wedding Invitation
-        </div>
-      )}
-
-      {/*  */}
-    </div>
+    // <div
+    //   className={`flex flex-col ${
+    //     isMobileScreen ? "h-full" : "h-screen"
+    //   }  items-center bg-orange-100 `}
+    //   style={{
+    //     backgroundImage: "url('./images/winter.gif')",
+    //     backgroundSize: "cover",
+    //     backgroundPosition: "center",
+    //     width: "100%",
+    //     height: isMobileScreen ? "100%" : "100vh",
+    //   }}
+    // >
+    //   {pageLoaded ? (
+    //     <>
+    //       {isMobileScreen ? (
+    //         <MobileView intro={intro} setIntro={setIntro} />
+    //       ) : (
+    //         <DesktopView intro={intro} setIntro={setIntro} />
+    //       )}
+    //     </>
+    //   ) : (
+    //     <div className="h-screen flex justify-center items-center text-[15px] text-bold">
+    //       Wedding Invitation
+    //     </div>
+    //   )}
+    // </div>
   );
 }

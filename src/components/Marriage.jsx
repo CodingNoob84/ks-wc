@@ -12,7 +12,7 @@ export const MarriageTimings = () => {
   return (
     <SlideUpCard>
       <img
-        src="/images/MarriageDetails.jpg"
+        src="/images/MarriageDetails.png"
         className="w-full h-full object-cover"
       />
     </SlideUpCard>
